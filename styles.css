@@ -1,9 +1,11 @@
 body {
   background-color: #298d26;
+  position: relative;
 }
 
 img {
   width: 100px;
+  position: absolute;
 }
 
 .turn-right {
