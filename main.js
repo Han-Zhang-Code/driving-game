@@ -6,22 +6,18 @@ var intervalID = null;
 document.addEventListener('keydown', turnCar);
 function turnCar(event) {
   if (event.key === 'ArrowUp') {
-    $car.className = 'turn-up';
     clearInterval(intervalID);
     intervalID = setInterval(movingUp, 16);
     carStarted = true;
   } else if (event.key === 'ArrowDown') {
-    $car.className = 'turn-down';
     clearInterval(intervalID);
     intervalID = setInterval(movingDown, 16);
     carStarted = true;
   } else if (event.key === 'ArrowRight') {
-    $car.className = 'turn-right';
     clearInterval(intervalID);
     intervalID = setInterval(movingRight, 16);
     carStarted = true;
   } else if (event.key === 'ArrowLeft') {
-    $car.className = 'turn-left';
     clearInterval(intervalID);
     intervalID = setInterval(movingLeft, 16);
     carStarted = true;
