@@ -7,23 +7,23 @@ document.addEventListener('keydown', turnCar);
 function turnCar(event) {
   if (event.key === 'ArrowUp') {
     $car.className = 'turn-up';
-    movingUp();
-    //  intervalID = setInterval(movingUp, 16);
+    clearInterval(intervalID);
+    intervalID = setInterval(movingUp, 16);
     carStarted = true;
   } else if (event.key === 'ArrowDown') {
     $car.className = 'turn-down';
-    movingDown();
-    //    intervalID = setInterval(movingDown, 16);
+    clearInterval(intervalID);
+    intervalID = setInterval(movingDown, 16);
     carStarted = true;
   } else if (event.key === 'ArrowRight') {
     $car.className = 'turn-right';
-    movingRight();
-    //  intervalID = setInterval(movingRight, 16);
+    clearInterval(intervalID);
+    intervalID = setInterval(movingRight, 16);
     carStarted = true;
   } else if (event.key === 'ArrowLeft') {
     $car.className = 'turn-left';
-    movingLeft();
-    //   intervalID = setInterval(movingLeft, 16);
+    clearInterval(intervalID);
+    intervalID = setInterval(movingLeft, 16);
     carStarted = true;
   }
   if (event.key === ' ' && carStarted === false) {
