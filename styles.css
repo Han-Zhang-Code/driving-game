@@ -10,20 +10,16 @@ img {
 
 .turn-right {
   transform: rotate(0deg);
-  transition: transform 0.5s;
 }
 
 .turn-left {
   transform: rotate(-180deg);
-  transition: transform 0.5s;
 }
 
 .turn-up {
   transform: rotate(-90deg);
-  transition: transform 0.5s;
 }
 
 .turn-down {
   transform: rotate(90deg);
-  transition: transform 0.5s;
 }
