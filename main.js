@@ -14,12 +14,12 @@ function turnCar(event) {
   }
 
   if (event.key === ' ') {
-    //   var intervalID = setInterval(movingRight, 16);
+  //  var intervalID = setInterval(movingRight, 16);
     movingRight();
   }
 
 }
 function movingRight() {
   x += 10;
-  document.getElementById('car').style.transform = 'rotate(0deg) translate(' + x + 'px)';
+  $car.style.transform = 'rotate(0deg) translate(' + x + 'px)';
 }
