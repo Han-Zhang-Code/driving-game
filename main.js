@@ -9,7 +9,6 @@ var blocks = [];
 function addBlock(x, y, w, h) {
   const $block = document.createElement('div');
   $block.style.position = 'absolute';
-  // template string
   $block.style.width = `${w}px`;
   $block.style.height = h + 'px';
   $block.style.left = x + 'px';
@@ -20,6 +19,13 @@ function addBlock(x, y, w, h) {
 }
 
 addBlock(220, 0, 39, 134);
+addBlock(520, 0, 39, 350);
+addBlock(0, 250, 364, 49);
+addBlock(307, 413, 188, 174);
+addBlock(0, 711, 188, 89);
+addBlock(459, 711, 188, 89);
+addBlock(600, 501, 230, 49);
+addBlock(812, 270, 188, 81);
 
 document.addEventListener('keydown', turnCar);
 function turnCar(event) {
@@ -50,105 +56,37 @@ setInterval(updatePosition, 16);
 
 function updatePosition() {
 
-  const carRight = x + xSpeed + 100;
-  const carLeft = x + xSpeed;
-  // const carTop = y + ySpeed;
-  // const carBottom = y + ySpeed + 100;
+  var carRight = x + xSpeed + 100;
+  var carLeft = x + xSpeed;
+  var carTop = y + ySpeed;
+  var carBottom = y + ySpeed + 100;
   for (let i = 0; i < blocks.length; i++) {
-    const blockRight = blocks[i].x + blocks[i].w;
-    const blockLeft = blocks[i].x;
-    // const blockTop = blocks[i].y;
-    //  const blockBottom = blocks[i].y + blocks[i].h;
+    var blockRight = blocks[i].x + blocks[i].w;
+    var blockLeft = blocks[i].x;
+    var blockTop = blocks[i].y;
+    var blockBottom = blocks[i].y + blocks[i].h;
 
-    const carRightInsideBlock = carRight > blockLeft && carRight < blockRight;
-    const carLeftInsideBlock = carLeft > blockLeft && carLeft < blockRight;
-    const blockInsideCarHorizontal = carLeft < blockLeft && carRight > blockRight;
+    var carRightInsideBlock = carRight > blockLeft && carRight < blockRight;
+    var carLeftInsideBlock = carLeft > blockLeft && carLeft < blockRight;
+    var blockInsideCarHorizontal = carLeft < blockLeft && carRight > blockRight;
+    var carTopInsideBlock = carTop < blockBottom && carTop > blockTop;
+    var carBottomInsideBlock = carBottom > blockTop && carBottom < blockBottom;
+    var blockInsideCarVertical = carTop < blockTop && carBottom > blockBottom;
 
-    const overlapsHorizontal = carRightInsideBlock || carLeftInsideBlock || blockInsideCarHorizontal;
+    var overlapsHorizontal = carRightInsideBlock || carLeftInsideBlock || blockInsideCarHorizontal;
+    var overlapsVertical = carTopInsideBlock || carBottomInsideBlock || blockInsideCarVertical;
 
-    if (overlapsHorizontal) {
+    if (overlapsHorizontal && overlapsVertical) {
       return;
     }
   }
 
-  // Check if car goes outside of walls
   if (carLeft < 0) return;
   if (carRight > 1000) return;
+  if (carTop < 0) return;
+  if (carBottom > 799) return;
 
   x = x + xSpeed;
   y = y + ySpeed;
   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(' + angle + 'deg)';
 }
-
-// function movingRight() {
-
-//   x += 10;
-//   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(0deg)';
-
-//   if (x > 910 || y > 700 || x < 0 || y < 0) {
-//     clearInterval(intervalID);
-//     carStarted = false;
-//   }
-//   // if (x > 120 && x < 240 && y <= 124) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-//   // if (x >= 420 && x <= 560 && y <= 350) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-// }
-// function movingLeft() {
-
-//   x -= 10;
-//   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(-180deg)';
-
-//   if (x > 910 || y > 720 || x < 0 || y < 0) {
-//     clearInterval(intervalID);
-//     carStarted = false;
-//   }
-//   // if (x > 120 && x < 240 && y <= 124) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-//   // if (x >= 420 && x <= 560 && y <= 350) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-// }
-// function movingUp() {
-
-//   y -= 10;
-//   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(-90deg)';
-
-//   if (x > 910 || y > 720 || x < -10 || y < -10) {
-//     clearInterval(intervalID);
-//     carStarted = false;
-//   }
-//   // if (x > 120 && x < 240 && y <= 134) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-//   // if (x >= 440 && x < 540 && y <= 350) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-// }
-// function movingDown() {
-
-//   y += 10;
-//   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(90deg)';
-
-//   if (x > 910 || y > 720 || x < -10 || y < -10) {
-//     clearInterval(intervalID);
-//     carStarted = false;
-//   }
-//   // if (x > 120 && x < 240 && y <= 134) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-//   // if (x >= 440 && x < 540 && y <= 350) {
-//   //   clearInterval(intervalID);
-//   //   carStarted = false;
-//   // }
-// }
