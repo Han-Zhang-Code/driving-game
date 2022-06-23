@@ -1,9 +1,99 @@
 body {
-  background-color: #298d26;
+  background-color: white;
+}
+
+.color {
+  background-color: #d9d9d9;
   position: relative;
+  width: 1000px;
+  height: 800px;
+  border: 5px solid black;
 }
 
 img {
   width: 100px;
   position: absolute;
+}
+
+.rectangle1 {
+  position: absolute;
+  width: 39px;
+  height: 134px;
+  left: 220px;
+  top: 0;
+  background: #0d0c0c;
+}
+
+.rectangle2 {
+  position: absolute;
+  width: 39px;
+  height: 350px;
+  left: 520px;
+  top: 0;
+  background: #0d0c0c;
+}
+
+.rectangle3 {
+  position: absolute;
+  width: 364px;
+  height: 49px;
+  left: 0;
+  top: 250px;
+  background: #0d0c0c;
+}
+
+.rectangle4 {
+  position: absolute;
+  width: 188px;
+  height: 174px;
+  left: 307px;
+  top: 413px;
+  background: #0d0c0c;
+}
+
+.rectangle5 {
+  position: absolute;
+  width: 188px;
+  height: 89px;
+  left: 0;
+  bottom: 0;
+  background: #0d0c0c;
+}
+
+.rectangle6 {
+  position: absolute;
+  width: 188px;
+  height: 89px;
+  left: 459px;
+  bottom: 0;
+  background: #0d0c0c;
+}
+
+.rectangle7 {
+  position: absolute;
+  width: 230px;
+  height: 49px;
+  left: 600px;
+  top: 501px;
+  background: #0d0c0c;
+}
+
+.rectangle8 {
+  position: absolute;
+  width: 188px;
+  height: 81px;
+  right: 0;
+  top: 270px;
+  background: #0d0c0c;
+}
+
+.circle {
+  position: absolute;
+  width: 188px;
+  height: 188px;
+  right: 0;
+  top: 0;
+  border-radius: 50%;
+  border: 5px solid black;
+  border-style: dashed;
 }

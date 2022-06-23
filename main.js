@@ -29,20 +29,77 @@ function turnCar(event) {
     clearInterval(intervalID);
     carStarted = false;
   }
+
 }
 function movingRight() {
+
   x += 10;
   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(0deg)';
+
+  if (x > 910 || y > 700 || x < 0 || y < 0) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x > 120 && x < 240 && y <= 124) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x >= 420 && x <= 560 && y <= 350) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
 }
 function movingLeft() {
+
   x -= 10;
   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(-180deg)';
+
+  if (x > 910 || y > 720 || x < 0 || y < 0) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x > 120 && x < 240 && y <= 124) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x >= 420 && x <= 560 && y <= 350) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
 }
 function movingUp() {
+
   y -= 10;
   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(-90deg)';
+
+  if (x > 910 || y > 720 || x < -10 || y < -10) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x > 120 && x < 240 && y <= 134) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x >= 440 && x < 540 && y <= 350) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
 }
 function movingDown() {
+
   y += 10;
   $car.style.transform = 'translate(' + x + 'px,' + y + 'px) rotate(90deg)';
+
+  if (x > 910 || y > 720 || x < -10 || y < -10) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x > 120 && x < 240 && y <= 134) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
+  if (x >= 440 && x < 540 && y <= 350) {
+    clearInterval(intervalID);
+    carStarted = false;
+  }
 }
