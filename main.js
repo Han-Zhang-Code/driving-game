@@ -4,8 +4,17 @@ var y = 0;
 var xSpeed = 0;
 var ySpeed = 0;
 var angle = 0;
+var count = 0;
 var $car = document.querySelector('img');
-
+var $selectPopUp = document.querySelector('.popup');
+document.querySelector('#close').addEventListener('click', function () {
+  $selectPopUp.className = 'popup row hidden';
+});
+var $selectText = document.querySelector('#text');
+var $selectTryAgain = document.querySelector('.try-again');
+$selectTryAgain.addEventListener('click', function () {
+  $selectPopUp.className = 'popup row hidden';
+});
 var blocks = [];
 function addBlock(x, y, w, h) {
   var $block = document.createElement('div');
@@ -153,7 +162,7 @@ function updatePosition() {
     var getCoinVertical = carTopInsidecoin || carBottomInsidecoin || coinInsideCarVertical;
 
     if (getCoinHorizontal && getCoinVertical) {
-
+      count++;
       $coinsImg[i].setAttribute('class', 'hidden');
 
       coins.splice(i, 1);
@@ -197,6 +206,8 @@ function updatePosition() {
     y = 0;
     xSpeed = 0;
     ySpeed = 0;
+    $selectPopUp.className = 'popup row';
+    $selectText.textContent = 'Total Coins Collected:  ' + count;
     for (var a = 0; a < $coinsHiddenImg.length; a++) {
       $coinsHiddenImg[a].setAttribute('class', 'coins');
     }
@@ -210,7 +221,7 @@ function updatePosition() {
       { x: 200, y: 430 }, { x: 100, y: 530 }];
 
     rockets = [{ x: 200, y: 607 }, { x: 200, y: 148 }, { x: 700, y: 273 }];
-
+    count = 0;
   }
 
   if (carLeft < 0) return;
