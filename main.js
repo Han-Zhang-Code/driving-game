@@ -53,6 +53,17 @@ addCoins(900, 500);
 addCoins(300, 730);
 addCoins(800, 730);
 addCoins(700, 150);
+addCoins(450, 16);
+addCoins(530, 466);
+
+addCoins(630, 400);
+addCoins(630, 600);
+addCoins(400, 630);
+addCoins(500, 630);
+addCoins(700, 630);
+addCoins(100, 430);
+addCoins(200, 430);
+addCoins(100, 530);
 
 var rockets = [];
 function addRocket(x, y) {
@@ -66,9 +77,10 @@ function addRocket(x, y) {
   document.querySelector('.color').append($rocket);
   rockets.push({ x, y });
 }
-addRocket(450, 16);
-addRocket(40, 566);
-addRocket(530, 466);
+
+addRocket(200, 607);
+addRocket(200, 148);
+addRocket(700, 273);
 
 document.addEventListener('keydown', turnCar);
 function turnCar(event) {
@@ -170,6 +182,8 @@ function updatePosition() {
     if (getrocketHorizontal && getrocketVertical) {
 
       $rocketImg[j].setAttribute('class', 'hidden');
+      xSpeed *= 2;
+      ySpeed *= 2;
       // setInterval(updatePosition, 100);
       rockets.splice(j, 1);
 
@@ -190,9 +204,12 @@ function updatePosition() {
       $rocketsHiddenImg[k].setAttribute('class', 'rockets');
     }
     coins = [{ x: 110, y: 20 }, { x: 20, y: 110 }, { x: 20, y: 190 }, { x: 110, y: 190 }, { x: 330, y: 100 },
-      { x: 100, y: 330 }, { x: 450, y: 200 }, { x: 600, y: 300 }, { x: 900, y: 500 }, { x: 300, y: 730 }, { x: 800, y: 730 }, { x: 700, y: 150 }];
+      { x: 100, y: 330 }, { x: 450, y: 200 }, { x: 600, y: 300 }, { x: 900, y: 500 }, { x: 300, y: 730 },
+      { x: 800, y: 730 }, { x: 700, y: 150 }, { x: 450, y: 16 }, { x: 530, y: 466 }, { x: 630, y: 400 },
+      { x: 630, y: 600 }, { x: 400, y: 630 }, { x: 500, y: 630 }, { x: 700, y: 630 }, { x: 100, y: 430 },
+      { x: 200, y: 430 }, { x: 100, y: 530 }];
 
-    rockets = [{ x: 450, y: 16 }, { x: 40, y: 566 }, { x: 530, y: 466 }];
+    rockets = [{ x: 200, y: 607 }, { x: 200, y: 148 }, { x: 700, y: 273 }];
 
   }
 
