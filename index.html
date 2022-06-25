@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Driving Game</title>
-  </head>
-  <body>
+
+<head>
+  <link rel="stylesheet" href="styles.css">
+  <title>Driving Game</title>
+</head>
+
+<body>
+  <div class="popup row hidden">
+    <button id="close" class="close">&times;</button>
+    <h2>Congratulation!!</h2>
+    <div class="row">
+      <p id="text" class="adjust-text add-padding-top">
+      </p>
+    </div>
+    <div class="row">
+      <button class="try-again">Try Again</button>
+    </div>
+  </div>
+  <div class="color">
     <img src="images/f1.svg" id="car" class="turn-right" alt="f1">
+    <div class="circle">
+      <p class="restart-text">Finish</p>
+    </div>
+  </div>
 
-
-    <script src="main.js"></script>
-  </body>
+  <script src="main.js"></script>
+</body>
 
 </html>
