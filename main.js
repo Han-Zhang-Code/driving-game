@@ -50,9 +50,9 @@ function addCoins(x, y) {
   coins.push({ x, y });
 }
 
-addCoins(110, 20);
+addCoins(600, 20);
 addCoins(20, 110);
-addCoins(20, 190);
+addCoins(800, 150);
 addCoins(110, 190);
 addCoins(330, 100);
 addCoins(100, 330);
@@ -69,7 +69,7 @@ addCoins(630, 400);
 addCoins(630, 600);
 addCoins(400, 630);
 addCoins(500, 630);
-addCoins(700, 630);
+addCoins(700, 60);
 addCoins(100, 430);
 addCoins(200, 430);
 addCoins(100, 530);
@@ -90,7 +90,29 @@ function addRocket(x, y) {
 addRocket(200, 607);
 addRocket(200, 148);
 addRocket(700, 273);
+addRocket(900, 600);
+addRocket(300, 607);
+addRocket(20, 430);
+addRocket(790, 390);
 
+var snail = [];
+function addSnail(x, y) {
+  var $snail = document.createElement('img');
+  $snail.setAttribute('src', 'images/snail.png');
+  $snail.setAttribute('class', 'snail');
+  $snail.setAttribute('id', 'snail');
+  $snail.style.width = '50px';
+  $snail.style.left = x + 'px';
+  $snail.style.top = y + 'px';
+  document.querySelector('.color').append($snail);
+  snail.push({ x, y });
+}
+addSnail(400, 300);
+addSnail(800, 630);
+addSnail(600, 150);
+addSnail(110, 110);
+addSnail(350, 170);
+addSnail(700, 630);
 document.addEventListener('keydown', turnCar);
 function turnCar(event) {
 
@@ -193,14 +215,42 @@ function updatePosition() {
       $rocketImg[j].setAttribute('class', 'hidden');
       xSpeed *= 2;
       ySpeed *= 2;
-      // setInterval(updatePosition, 100);
       rockets.splice(j, 1);
+
+    }
+  }
+
+  var $snailImg = document.querySelectorAll('.snail');
+  for (var k = 0; k < snail.length; k++) {
+
+    var snailRight = snail[k].x + 50;
+    var snailLeft = snail[k].x;
+    var snailTop = snail[k].y;
+    var snailBottom = snail[k].y + 50;
+
+    var carRightInsidesnail = carRight >= snailLeft && carRight <= snailRight;
+    var carLeftInsidesnail = carLeft >= snailLeft && carLeft < snailRight;
+    var snailInsideCarHorizontal = carLeft <= snailLeft && carRight >= snailRight;
+    var carTopInsidesnail = carTop <= snailBottom && carTop >= snailTop;
+    var carBottomInsidesnail = carBottom >= snailTop && carBottom <= snailBottom;
+    var snailInsideCarVertical = carTop <= snailTop && carBottom >= snailBottom;
+
+    var getsnailHorizontal = carRightInsidesnail || carLeftInsidesnail || snailInsideCarHorizontal;
+    var getsnailVertical = carTopInsidesnail || carBottomInsidesnail || snailInsideCarVertical;
+
+    if (getsnailHorizontal && getsnailVertical) {
+
+      $snailImg[k].setAttribute('class', 'hidden');
+      xSpeed /= 2;
+      ySpeed /= 2;
+      snail.splice(k, 1);
 
     }
   }
 
   var $coinsHiddenImg = document.querySelectorAll('#coins');
   var $rocketsHiddenImg = document.querySelectorAll('#rockets');
+  var $snailHiddenImg = document.querySelectorAll('#snail');
   if (x > 850 && y < 50) {
     x = 0;
     y = 0;
@@ -211,16 +261,21 @@ function updatePosition() {
     for (var a = 0; a < $coinsHiddenImg.length; a++) {
       $coinsHiddenImg[a].setAttribute('class', 'coins');
     }
-    for (var k = 0; k < $rocketsHiddenImg.length; k++) {
-      $rocketsHiddenImg[k].setAttribute('class', 'rockets');
+    for (var b = 0; b < $rocketsHiddenImg.length; b++) {
+      $rocketsHiddenImg[b].setAttribute('class', 'rockets');
     }
-    coins = [{ x: 110, y: 20 }, { x: 20, y: 110 }, { x: 20, y: 190 }, { x: 110, y: 190 }, { x: 330, y: 100 },
+    for (var c = 0; c < $snailHiddenImg.length; c++) {
+      $snailHiddenImg[c].setAttribute('class', 'snail');
+    }
+    coins = [{ x: 600, y: 20 }, { x: 20, y: 110 }, { x: 800, y: 150 }, { x: 110, y: 190 }, { x: 330, y: 100 },
       { x: 100, y: 330 }, { x: 450, y: 200 }, { x: 600, y: 300 }, { x: 900, y: 500 }, { x: 300, y: 730 },
       { x: 800, y: 730 }, { x: 700, y: 150 }, { x: 450, y: 16 }, { x: 530, y: 466 }, { x: 630, y: 400 },
-      { x: 630, y: 600 }, { x: 400, y: 630 }, { x: 500, y: 630 }, { x: 700, y: 630 }, { x: 100, y: 430 },
+      { x: 630, y: 600 }, { x: 400, y: 630 }, { x: 500, y: 630 }, { x: 700, y: 60 }, { x: 100, y: 430 },
       { x: 200, y: 430 }, { x: 100, y: 530 }];
 
-    rockets = [{ x: 200, y: 607 }, { x: 200, y: 148 }, { x: 700, y: 273 }];
+    rockets = [{ x: 200, y: 607 }, { x: 200, y: 148 }, { x: 700, y: 273 }, { x: 900, y: 600 }, { x: 300, y: 607 },
+      { x: 20, y: 430 }, { x: 790, y: 390 }];
+    snail = [{ x: 400, y: 300 }, { x: 800, y: 630 }, { x: 600, y: 150 }, { x: 110, y: 110 }, { x: 350, y: 170 }];
     count = 0;
   }
 
