@@ -5,15 +5,18 @@ var xSpeed = 0;
 var ySpeed = 0;
 var angle = 0;
 var count = 0;
+var start = Date.now();
 var $car = document.querySelector('img');
 var $selectPopUp = document.querySelector('.popup');
 document.querySelector('#close').addEventListener('click', function () {
   $selectPopUp.className = 'popup row hidden';
 });
 var $selectText = document.querySelector('#text');
+var $selectTime = document.querySelector('#time');
 var $selectTryAgain = document.querySelector('.try-again');
 $selectTryAgain.addEventListener('click', function () {
   $selectPopUp.className = 'popup row hidden';
+  start = Date.now();
 });
 var blocks = [];
 function addBlock(x, y, w, h) {
@@ -256,8 +259,11 @@ function updatePosition() {
     y = 0;
     xSpeed = 0;
     ySpeed = 0;
+    var end = Date.now();
+    var elapsed = end - start;
     $selectPopUp.className = 'popup row';
     $selectText.textContent = 'Total Coins Collected:  ' + count;
+    $selectTime.textContent = 'Total Time Used:  ' + (elapsed / 1000).toFixed(2) + ' seconds';
     for (var a = 0; a < $coinsHiddenImg.length; a++) {
       $coinsHiddenImg[a].setAttribute('class', 'coins');
     }
@@ -275,7 +281,7 @@ function updatePosition() {
 
     rockets = [{ x: 200, y: 607 }, { x: 200, y: 148 }, { x: 700, y: 273 }, { x: 900, y: 600 }, { x: 300, y: 607 },
       { x: 20, y: 430 }, { x: 790, y: 390 }];
-    snail = [{ x: 400, y: 300 }, { x: 800, y: 630 }, { x: 600, y: 150 }, { x: 110, y: 110 }, { x: 350, y: 170 }];
+    snail = [{ x: 400, y: 300 }, { x: 800, y: 630 }, { x: 600, y: 150 }, { x: 110, y: 110 }, { x: 350, y: 170 }, { x: 700, y: 630 }];
     count = 0;
   }
 
